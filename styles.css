@@ -1,0 +1,225 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --color-basic: #F3F5FC;
+  --color-text: #0A3871;
+  --color-text-off: #495057;
+}
+
+body {
+  background-color: var(--color-basic);
+}
+
+main {
+  display: grid;
+}
+
+.btn {
+  font-size: 16px;
+  width: 100%;
+  height: 67px;
+  border-radius: 24px;
+  border: solid var(--color-text) 1px;
+  font-size: 400;
+  background-color: transparent;
+  cursor: pointer;
+}
+.btn:active {
+  background-color: var(--color-text);
+  color: var(--color-basic);
+}
+
+.header {
+  width: 100%;
+  height: 96px;
+  padding: 24px 16px;
+
+}
+
+.enter-text {
+  width: 100%;
+  height: auto;
+  padding: 0 32px;
+  margin-top: 32px;
+
+  & form {
+    height: auto;
+
+    & textarea {
+      width: 100%;
+      min-height: calc(15rem + 20vw);
+      background-color: transparent;
+      color: var(--color-text);
+      font-size: 32px;
+      font-weight: 400;
+      border: none;
+      text-align: left;
+      resize: none;
+    }
+    & textarea:focus {
+      outline: none;
+    }
+    & ::placeholder {
+      color: var(--color-text);
+      font-size: 32px;
+      font-weight: 400;
+    }
+  }
+
+  & fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+
+    & .warning {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--color-text-off);
+      margin-bottom: 16px;
+      padding: 0.2rem;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    & .btn-encrypt {
+      margin-bottom: 24px;
+      background-color: var(--color-text);
+      color: var(--color-basic);
+    }
+    & .btn-encrypt:active {
+      background-color: var(--color-basic);
+      color: var(--color-text);
+    }
+  }
+}
+
+.encrypt-text {
+  padding: 0 32px;
+  margin-top: 64px;
+  margin-bottom: 25px;
+  width: 100%;
+
+  & .text-result {
+    background-color: white;
+    width: 100%;
+    border-radius: 32px;
+    box-shadow: 0 24px 32px rgba(0, 0, 0, 0.104);
+    padding: 32px;
+
+    & svg {
+      display: none;
+    }
+  
+    & .pResult {
+      font-size: 24px;
+      max-width: 225px;
+      color: var(--color-text-off);
+      margin-bottom: 32px;
+      word-break: break-word;
+      hyphens: auto;
+    }
+
+    & .btn-copy {
+      animation: CopyAnimation 1s ease-in-out;
+    }
+
+    & .noTextH2 {
+      text-align: center;
+      color: #343A40;
+      margin-bottom: 16px;
+    }
+    & .noTextP {
+      text-align: center;
+      color: var(--color-text-off);
+    }
+  }
+}
+
+@keyframes CopyAnimation {
+  from {
+    background-color: green;
+    color: white;
+  }
+  to {
+    background-color: green;
+    color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    display: grid;
+    grid-template-columns: auto 1.2fr 0.7fr;
+    max-width: 1024px;
+    margin: auto;
+  }
+
+  .btn:hover {
+    background-color: var(--color-text);
+    color: var(--color-basic);
+  }
+
+  .enter-text {
+    margin-top: 168px;
+  
+    & form {
+
+      & textarea {
+        min-height: auto;
+        height: 50vh;
+      }
+      & fieldset {
+
+        & .btns {
+          display: flex;
+          gap: 24px;
+          
+          & .btn-encrypt:hover {
+            background-color: var(--color-basic);
+            color: var(--color-text);
+          }
+        }
+      }
+    }
+  }
+
+  .encrypt-text {
+    padding: 0 32px;
+    margin-top: 40px;
+
+    & .text-result {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
+      & .pResult {
+        overflow-y: auto;
+        height: calc(100vh - 230px);
+      }
+
+      & svg {
+        width: 100%;
+        display: block;
+      }
+
+      & .btn {
+        margin-top: auto;
+      } 
+      & .btn-copy {
+        animation: CopyAnimation 1s ease-in-out;
+      }
+    }
+  }
+}
